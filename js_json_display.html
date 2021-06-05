@@ -1,0 +1,41 @@
+<html>
+	<body>
+	<input type="button" onclick="f1()" value="Get Data">
+		<div id="tbl">
+			
+		</div>
+	</body>
+	
+</html>
+
+<script>
+	function f1(){
+	 
+		var emps=[
+			{empNo:101, empName:'Prem', empSal:25000, techSkills:['.Net', 'MsSql', 'Cloud']},
+			{empNo:102, empName:'Prem1', empSal:35000, techSkills:[]},
+			{empNo:103, empName:'Prem2', empSal:45000, techSkills:['.Net', 'UI', 'Angular', 'MsSql', 'Cloud']},
+			{empNo:104, empName:'Prem3', empSal:55000, techSkills:['UI', 'Angular', 'React', 'Cloud']},
+		];
+		var obj=document.getElementById('tbl');
+		var t="<table border=1><tr><td>Code</td><td>Name</td><td>Salary</td><td>Skills</td></tr>";
+		for(var i=0;i<emps.length;i++)
+		{
+			t=t+"<tr><td>"+emps[i].empNo+"</td><td>"+emps[i].empName+"</td><td>"+emps[i].empSal+"</td><td> &nbsp;"
+			
+			if(emps[i].techSkills.length>0)
+			{
+				t=t+"<ul>";
+				for(var j=0; j<emps[i].techSkills.length;j++)
+				{
+					t=t+"<li>"+emps[i].techSkills[j]+"</li>";
+				}
+				t=t+"</ul>";
+			}
+			
+			t=t+"</td></tr>";
+		}
+		t=t+"</table>";
+		obj.innerHTML=t;
+	}
+</script>

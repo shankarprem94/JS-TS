@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <title>js_crud</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	</head>
+	<body onload="allData()">
+		<div class="row m-5 p-5 border border-primary">
+			<div class="col-md-6">
+				<form>
+					<div class="form-group">
+					  <label for="email">Course:</label>
+					  <input type="email" class="form-control" id="course" placeholder="Enter course" name="course">
+					</div>
+					<!-- <div class="form-group"> -->
+					  <!-- <label for="email">Index:</label> -->
+					  <!-- <input type="email" class="form-control" id="indx" placeholder="Enter index" name="indx"> -->
+					<!-- </div> -->
+					<input type="button" class="btn btn-primary" value="Add" onclick="addData()">
+					<input type="button" class="btn btn-danger" value="Remove" onclick="removeData()">
+					<input type="button" class="btn btn-dark" value="Remove Multiple" onclick="removeMultipleData()">
+					<input type="button" class="btn btn-secondary" value="Clear" onclick="clearData()">
+				</form>
+			</div>
+			<div class="col-md-6">
+				<table id="tbl" class="table table-dark table-hover"></table>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	var arr=["html", "css", "js", "ts", "angular"];
+	function allData(){
+		var obj=document.getElementById('tbl');
+		var t="<tr><td colspan=3>Course List</td></tr><tr><td>Sr.</td><td>Course</td></tr>";
+		if(arr.length>0){
+			for(var i=0;i<arr.length;i++)
+			{
+				t=t+"<tr><td>"+(i+1)+"</td><td>"+arr[i]+"</td></tr>"
+			}
+		}else{
+			var t="<tr><td colspan=3>Empty Course List</td></tr>";
+		}
+		obj.innerHTML=t;
+	}
+	function addData(){
+		var obj=document.getElementById('course');
+		arr.push(obj.value)
+		obj.value=""; //remove data from text box after pushing into array
+		allData(); // Show all data after pushing into array
+		alert("Successfully added");
+	}
+	function removeData(){
+		var indx=prompt("Enter index number",1);
+		arr.splice(indx-1, 1);
+		allData();
+		alert("Successfully remove");
+	}
+	function removeMultipleData(){
+		var indx=prompt("Enter index number",1);
+		var elmnt=prompt("Enter number of element",1);
+		arr.splice(indx-1, elmnt);
+		allData();
+		alert("Successfully remove");
+	}
+	function clearData(){
+		arr=[];
+		allData();
+	}
+	
+</script>

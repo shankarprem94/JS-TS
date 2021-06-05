@@ -1,0 +1,22 @@
+<html>
+	<body onload="f1()">
+		<div id="tbl">
+			
+		</div>
+	</body>
+	
+</html>
+
+<script>
+	function f1(){
+		var arr=["html", "css", "js", "ts", "angular"];
+		var obj=document.getElementById('tbl');
+		var t="<table border=1><tr><td>Sr.</td><td>Course</td></tr>";
+		for(var i=0;i<arr.length;i++)
+		{
+			t=t+"<tr><td>"+(i+1)+"</td><td>"+arr[i]+"</td></tr>"
+		}
+		t=t+"</table>";
+		obj.innerHTML=t;
+	}
+</script>
